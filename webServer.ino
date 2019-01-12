@@ -417,7 +417,7 @@ void webSave() {
   // Copy more data into our variables
   webServer.arg("wifiSSID").toCharArray(wifiSSID, 30);
   if (webServer.arg("wifiPass") != "********")
-    webServer.arg("wifiPass").toCharArray(wifiPass, 30);
+    webServer.arg("wifiPass").toCharArray(wifiPass, 64);
 
   // If DHCP - set variables accordingly
   if (webServer.arg("dhcp") == "true") {

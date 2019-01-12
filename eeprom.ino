@@ -51,10 +51,10 @@ bool saveSettings() {
   for(x = 0; x < 30 && wifiSSID[x] != '\0'; x++)
     EEPROM.write(32 + x, wifiSSID[x]);
   EEPROM.write(32 + x, '\0');
-  for(x = 0; x < 30 && wifiPass[x] != '\0'; x++)
-    EEPROM.write(62 + x, wifiPass[x]);
-  EEPROM.write(62 + x, '\0');
-  
+  for(x = 0; x < 64 && wifiPass[x] != '\0'; x++)
+    EEPROM.write(362 + x, wifiPass[x]);
+  EEPROM.write(362 + x, '\0');
+
   delay(100);
   
   EEPROM.write(92, dhcp);
@@ -148,8 +148,8 @@ bool loadSettings() {
       break;
   }
   wifiSSID[x] = '\0';
-  for(x = 0; x < 30; x++) {
-    wifiPass[x] = EEPROM.read(62 + x);
+  for(x = 0; x < 64; x++) {
+    wifiPass[x] = EEPROM.read(362 + x);
     if (wifiPass[x] == '\0')
       break;
   }
